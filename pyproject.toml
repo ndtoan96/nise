@@ -1,0 +1,18 @@
+[project]
+name = "nise"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Nguyen Duc Toan", email = "ntoan96@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn>=0.24.0.post1",
+    "pydantic>=2.5.2",
+]
+requires-python = "~= 3.11"
+readme = "README.md"
+license = {text = "None"}
+
+[tool.pdm.scripts]
+dev = "uvicorn main:app --reload"
