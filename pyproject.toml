@@ -9,6 +9,9 @@ dependencies = [
     "fastapi>=0.104.1",
     "uvicorn>=0.24.0.post1",
     "pydantic>=2.5.2",
+    "levenshtein>=0.23.0",
+    "easyocr>=1.7.1",
+    "opencv-python>=4.8.1.78",
 ]
 requires-python = "~= 3.11"
 readme = "README.md"
@@ -16,3 +19,8 @@ license = {text = "None"}
 
 [tool.pdm.scripts]
 dev = "uvicorn main:app --reload"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.1.7",
+]

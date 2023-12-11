@@ -6,22 +6,26 @@ chrome.runtime.onMessage.addListener(
             const title = document.querySelector("div._44qnta > span").textContent;
             const mall = document.querySelector("div._44qnta > svg.BSp\\+Yo") ? true : false;
 
-            const basePriceRaw = document.querySelector("div.Y3DvsN").textContent;
-            let basePrice;
-            if (basePriceRaw.includes('-')) {
-                basePrice = basePriceRaw.split('-').map((s) => Number(s.replace('₫', '').replaceAll('.', '')));
-            } else {
-                const p = Number(basePriceRaw.replace('₫', '').replaceAll('.', ''));
-                basePrice = [p, p];
-            }
-
-            const priceRaw = document.querySelector("div.pqTWkA").textContent;
             let price;
+            const priceRaw = document.querySelector("div.pqTWkA").textContent;
             if (priceRaw.includes('-')) {
                 price = priceRaw.split('-').map((s) => Number(s.replace('₫', '').replaceAll('.', '')));
             } else {
                 const p = Number(priceRaw.replace('₫', '').replaceAll('.', ''));
                 price = [p, p];
+            }
+
+            let basePrice;
+            const basePriceRaw = document.querySelector("div.Y3DvsN")?.textContent;
+            if (basePriceRaw != null) {
+                if (basePriceRaw.includes('-')) {
+                    basePrice = basePriceRaw.split('-').map((s) => Number(s.replace('₫', '').replaceAll('.', '')));
+                } else {
+                    const p = Number(basePriceRaw.replace('₫', '').replaceAll('.', ''));
+                    basePrice = [p, p];
+                }
+            } else {
+                basePrice = price;
             }
 
             let properties = {};
